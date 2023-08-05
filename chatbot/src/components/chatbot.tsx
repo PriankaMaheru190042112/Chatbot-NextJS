@@ -104,7 +104,7 @@ const Chatbot = () => {
       return (
         <>
           <Head>
-            <title>GPT Chatbot</title>
+            <title>HEXA Chatbot</title>
             <meta
               name="description"
               content={
@@ -121,9 +121,9 @@ const Chatbot = () => {
     
           <main className="mx-auto h-screen max-w-full sm:max-w-3xl">
             <div className="py-8 flex flex-row justify-center">
-            <img src='Blockchain_Network_Logo_3.png' className='w-16 h-16'></img>
+            <img src='Blockchain_Network_Logo_3.png' className='lg:w-16 lg:h-16 w-12 h-12'></img>
 
-              <h1 className="text-center text-6xl font-bold text-[#008080]">
+              <h1 className="text-center lg:text-6xl text-4xl font-bold text-[#008080]">
                 HEXA Chatbot
               </h1>
             </div>
@@ -131,11 +131,11 @@ const Chatbot = () => {
             {messages.length === 1 && (
               <div className="mx-10 mt-10 flex justify-center">
                 <div>
-                  <p className="mb-2 font-bold">
+                  <p className="mb-2 font-bold text-white">
                     HEXA Chatbot is a basic chatbot built with the OpenAI API,
                     Next.js and Tailwind CSS
                   </p>
-                  <p className="mb-32">
+                  <p className="mb-32 text-white">
                     To start a conversation, type a message below and hit send
                   </p>
                 </div>
@@ -144,63 +144,51 @@ const Chatbot = () => {
     
            
 
-    {/* <div>
+    <div>
   {messages.slice(1).map((message, index) => (
     <div
       className={`my-4 mx-2 ${
-        message.role === "assistant" ? "my-4 p-2 justify-start" : "justify-end"
+        message.role === "assistant" ? "my-4 p-2 justify-start" : "my-4 p-2 justify-end"
       }`}
       key={index.toString()}
     >
-      <div>
-        
-      </div>  
       <div
-        className={`w-5/12 rounded-3xl p-3 ${
-          message.role === "assistant" ? "bg-[#008080] text-white my-16" : "bg-[#008080] text-white float-right"
-        } ${
-          message.role === "assistant" ? "" : ""
-        } `}
+        className={`flex items-start ${
+          message.role === "assistant" ? "justify-start" : "justify-end"
+        }`}
       >
-        
-        <p className="font-bold">{message.role === "assistant" ? "GPT Chatbot" : "You"}</p>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-      </div>
-    </div>
-  ))}
-</div> */}
+      
+        {message.role === "assistant" && (
+          <img
+            src="BlockChain_Network_Logo_3.png"
+            alt="Bot"
+            className="w-10 h-10 rounded-full mr-2"
+          />
+        )}
 
-<div>
-  {messages.slice(1).map((message, index) => (
-    <div
-      className={`my-4 mx-2 ${
-        message.role === "assistant" ? "my-4 p-2 justify-start" : "justify-end"
-      }`}
-      key={index.toString()}
-    >
-      <div
-        className={`flex items-start ${message.role === "assistant" ? "justify-start" : "justify-end"}`}
-      >
-        {/* Bot or User Image */}
-        <img
-          src={message.role === "assistant" ? "Blockchain_Network_Logo_3.png" : "Blockchain_Network_Logo_3.png"}
-          alt={message.role === "assistant" ? "Bot" : "User"}
-          className={`w-10 h-10 rounded-full ${
-            message.role === "assistant" ? "mr-2" : "ml-2 mr-2 "
-          }`}
-        />
+      
         <div
           className={`w-5/12 rounded-3xl p-3 ${
-            message.role === "assistant" ? "bg-[#008080] text-white" : "bg-[#008080] text-white float-right"
+            message.role === "assistant" ? "bg-[#008080] text-white" : "bg-[#008080] text-white"
           } `}
         >
-          <p className="font-bold">{message.role === "assistant" ? "GPT Chatbot" : "You"}</p>
+          <p className="font-bold">{message.role === "assistant" ? "HEXA Chatbot" : "You"}</p>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
         </div>
+
+      
+        {message.role === "user" && (
+          <img
+            src="icons8-user-30.png"
+            alt="User"
+            className="w-10 h-10 rounded-full ml-2"
+          />
+        )}
       </div>
     </div>
   ))}
 </div>
+
 
 
 
@@ -211,19 +199,7 @@ const Chatbot = () => {
               </div>
             )}
     
-            {!loadingStatus && messages.length > 1 && (
-              <div className="mt-4 flex justify-center">
-                <button
-                  className="h-11 rounded-md border-2 border-gray-500
-                             bg-gray-500 px-1 py-1 hover:border-gray-600 
-                             hover:bg-gray-600"
-                  onClick={onClick}
-                >
-                  <p className="font-bold text-white">New chat</p>
-                </button>
-              </div>
-            )}
-    
+         
             <div ref={whitespaceRef} className="z-0"></div>
             <div
               ref={backgroundRef}
@@ -260,8 +236,7 @@ const Chatbot = () => {
                    
                     type="submit"
                   >
-                    <p className="font-bold">Send</p>
-                    {/* <img src='icons8-send-32.png' className='w-12 h-12'></img> */}
+                    <img src='icons8-send-24.png' className='w-12 h-12'></img>
                   </button>
                 )}
               </form>
