@@ -144,7 +144,7 @@ const Chatbot = () => {
     
            
 
-    <div>
+    {/* <div>
   {messages.slice(1).map((message, index) => (
     <div
       className={`my-4 mx-2 ${
@@ -152,7 +152,9 @@ const Chatbot = () => {
       }`}
       key={index.toString()}
     >
+      <div>
         
+      </div>  
       <div
         className={`w-5/12 rounded-3xl p-3 ${
           message.role === "assistant" ? "bg-[#008080] text-white my-16" : "bg-[#008080] text-white float-right"
@@ -163,6 +165,38 @@ const Chatbot = () => {
         
         <p className="font-bold">{message.role === "assistant" ? "GPT Chatbot" : "You"}</p>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+      </div>
+    </div>
+  ))}
+</div> */}
+
+<div>
+  {messages.slice(1).map((message, index) => (
+    <div
+      className={`my-4 mx-2 ${
+        message.role === "assistant" ? "my-4 p-2 justify-start" : "justify-end"
+      }`}
+      key={index.toString()}
+    >
+      <div
+        className={`flex items-start ${message.role === "assistant" ? "justify-start" : "justify-end"}`}
+      >
+        {/* Bot or User Image */}
+        <img
+          src={message.role === "assistant" ? "Blockchain_Network_Logo_3.png" : "Blockchain_Network_Logo_3.png"}
+          alt={message.role === "assistant" ? "Bot" : "User"}
+          className={`w-10 h-10 rounded-full ${
+            message.role === "assistant" ? "mr-2" : "ml-2 mr-2 "
+          }`}
+        />
+        <div
+          className={`w-5/12 rounded-3xl p-3 ${
+            message.role === "assistant" ? "bg-[#008080] text-white" : "bg-[#008080] text-white float-right"
+          } `}
+        >
+          <p className="font-bold">{message.role === "assistant" ? "GPT Chatbot" : "You"}</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+        </div>
       </div>
     </div>
   ))}
